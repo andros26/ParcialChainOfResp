@@ -1,6 +1,83 @@
-@startuml CajeroAutomatico 
-' Interfaz IHandlerBilletes
+@startuml cajeroAutomatico
+ 
 interface IHandlerBilletes {
-	+setNext(IHandlerBilletes handlerBilletes)
-	+solictudBilletes(cantidad: int)
+
+    +setNext(IHandlerBilletes handlerBilletes)
+
+    +solicitudBilletes(int cantidad)
+
 }
+ 
+abstract class BHandleBilletes implements IHandlerBilletes {
+
+    protected IHandlerBilletes next
+
+    +setNext(IHandlerBilletes handlerBilletes)
+
+    +solicitudBilletes(int cantidad)
+
+}
+ 
+class CHandle5k extends BHandleBilletes {
+
+    +solicitudBilletes(int cantidad)
+
+}
+ 
+class CHandle10k extends BHandleBilletes {
+
+    +solicitudBilletes(int cantidad)
+
+}
+ 
+class CHandle20k extends BHandleBilletes {
+
+    +solicitudBilletes(int cantidad)
+
+}
+ 
+class CHandle50k extends BHandleBilletes {
+
+    +solicitudBilletes(int cantidad)
+
+}
+ 
+class CHandle100k extends BHandleBilletes {
+
+    +solicitudBilletes(int cantidad)
+
+}
+ 
+class App {
+
+    +main(String[] args)
+
+}
+ 
+IHandlerBilletes <|.. BHandleBilletes
+
+BHandleBilletes <|-- CHandle5k
+
+BHandleBilletes <|-- CHandle10k
+
+BHandleBilletes <|-- CHandle20k
+
+BHandleBilletes <|-- CHandle50k
+
+BHandleBilletes <|-- CHandle100k
+ 
+App --> IHandlerBilletes : "Usa"
+
+App --> CHandle100k
+
+App --> CHandle50k
+
+App --> CHandle20k
+
+App --> CHandle10k
+
+App --> CHandle5k
+ 
+@enduml
+
+ 
