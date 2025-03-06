@@ -1,0 +1,6 @@
+@startuml CajeroAutomatico 
+' Interfaz IHandlerBilletes
+interface IHandlerBilletes {
+	+setNext(IHandlerBilletes handlerBilletes)
+	+solictudBilletes(cantidad: int)
+}
